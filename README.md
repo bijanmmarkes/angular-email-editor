@@ -2,6 +2,8 @@
 
 The excellent drag-n-drop email editor by [Unlayer](https://unlayer.com/embed) as a [Angular](https://angular.io/) _wrapper component_. This is the most powerful and developer friendly visual email builder for your app.
 
+> **Note:** This is a fork of the [official Unlayer Angular Email Editor](https://github.com/unlayer/angular-email-editor). We're maintaining this fork to provide support for newer versions of Angular (15-21), as the official repository has not been updated to support these versions.
+
 |                                                           Video Overview                                                            |
 | :---------------------------------------------------------------------------------------------------------------------------------: |
 | [![Angular Email Editor](https://unroll-assets.s3.amazonaws.com/unlayervideotour.png)](https://www.youtube.com/watch?v=MIWhX-NF3j8) |
@@ -16,8 +18,22 @@ Check out the live demo here: https://angular-email-editor-demo.netlify.app/ ([S
 The easiest way to use Angular Email Editor is to install it from Npm or Yarn and include it in your own Angular build process.
 
 ```
-npm install angular-email-editor --save
+npm install ng-email-editor --save
 ```
+
+### Version Compatibility
+
+This package supports Angular 15 through Angular 21. Install the version that matches your Angular version:
+
+| Angular Version | Package Version | Install Command |
+| --------------- | --------------- | --------------- |
+| 21.x.x          | 21.0.0          | `npm install ng-email-editor@21.0.0` |
+| 20.x.x          | 20.0.0          | `npm install ng-email-editor@20.0.0` |
+| 19.x.x          | 19.0.0          | `npm install ng-email-editor@19.0.0` |
+| 18.x.x          | 18.0.0          | `npm install ng-email-editor@18.0.0` |
+| 17.x.x          | 17.0.0          | `npm install ng-email-editor@17.0.0` |
+| 16.x.x          | 16.0.1          | `npm install ng-email-editor@16.0.1` |
+| 15.x.x          | 15.2.0          | `npm install ng-email-editor@15.2.0` |
 
 ## Usage
 
@@ -28,8 +44,7 @@ Next, you'll need to import the Email Editor module in your app's module.
 > If you don't have an **app.module.ts** file, you can ignore this step and add `imports: [ EmailEditorModule ]` to your **app.component.ts** instead.
 
 ```ts
-
-import { EmailEditorModule } from 'angular-email-editor';
+import { EmailEditorModule } from 'ng-email-editor';
 ...
 
 @NgModule({
@@ -43,7 +58,7 @@ import { EmailEditorModule } from 'angular-email-editor';
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
-import { EmailEditorComponent, EmailEditorModule } from 'angular-email-editor';
+import { EmailEditorComponent, EmailEditorModule } from 'ng-email-editor';
 
 @Component({
   selector: 'app-root',
@@ -156,4 +171,39 @@ You can submit new language translations by creating a PR on this GitHub repo: h
 
 ### License
 
-Copyright (c) 2024 Unlayer. [MIT](LICENSE) Licensed.
+Copyright (c) 2025 Unlayer. [MIT](LICENSE) Licensed.
+
+## Changelog
+
+### Version 21.0.0 (2025-12-30)
+- Added Angular 21 support
+- Updated to TypeScript 5.9
+- Migrated to ES2022 target
+
+### Version 20.0.0 (2025-12-30)
+- Added Angular 20 support
+- Updated to TypeScript 5.6
+
+### Version 19.0.0 (2025-12-30)
+- Added Angular 19 support
+- Updated to TypeScript 5.4
+- Fixed standalone component compatibility
+
+### Version 18.0.0 (2025-12-30)
+- Added Angular 18 support
+- Updated to TypeScript 5.2
+
+### Version 17.0.0 (2025-12-30)
+- Added Angular 17 support
+- Updated to TypeScript 5.1
+
+### Version 16.0.1 (2025-12-30)
+- Added Angular 16 support
+- Updated to TypeScript 4.9
+
+### Version 15.2.0 (2025-12-30)
+- Initial release with Angular 15 support
+- TypeScript 4.8 support
+- Comprehensive test coverage
+- Fixed change detection issues
+- Added proper peer dependencies
