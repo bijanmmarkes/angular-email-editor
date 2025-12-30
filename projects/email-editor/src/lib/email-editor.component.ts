@@ -10,7 +10,7 @@ import { loadScript } from './loadScript';
 import pkg from './source.json';
 import { Editor, UnlayerOptions, ToolsConfig, JSONTemplate } from '../types';
 
-declare module unlayer {
+declare namespace unlayer {
   function init(object);
   function createEditor(object);
   function loadDesign(object);
@@ -21,7 +21,6 @@ declare module unlayer {
 let lastEditorId = 0;
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'email-editor',
   templateUrl: './email-editor.component.html',
   styleUrls: ['./email-editor.component.css'],
@@ -43,11 +42,13 @@ export class EmailEditorComponent implements OnInit, AfterViewInit {
 
   editor: Editor;
 
-  constructor() {
-    this.id = this.editorId || `editor-${++lastEditorId}`;
-  }
+  constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!this.id) {
+      this.id = this.editorId || `editor-${++lastEditorId}`;
+    }
+  }
 
   ngAfterViewInit() {
     loadScript(this.loadEditor.bind(this), this.scriptUrl);

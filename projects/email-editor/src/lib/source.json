@@ -1,10 +1,18 @@
 {
   "name": "ng-email-editor",
-  "version": "15.2.0",
+  "version": "16.0.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "peerDependencies": {
-    "@angular/common": "^15.0.0",
-    "@angular/core": "^15.0.0",
+    "@angular/common": "^16.0.0",
+    "@angular/core": "^16.0.0",
     "unlayer-types": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bijanmmarkes/angular-email-editor.git"
   },
   "dependencies": {
     "tslib": "^2.3.0"
