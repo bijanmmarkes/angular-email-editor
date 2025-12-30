@@ -9,7 +9,7 @@ The excellent drag-n-drop email editor by [Unlayer](https://unlayer.com/embed) a
 
 ## Live Demo
 
-Check out the live demo here: https://angular-email-editor-demo.netlify.com/ ([Source Code](https://github.com/unlayer/angular-email-editor/tree/master/src))
+Check out the live demo here: https://angular-email-editor-demo.netlify.app/ ([Source Code](https://github.com/unlayer/angular-email-editor/tree/master/src))
 
 ## Installation
 
@@ -24,6 +24,8 @@ npm install angular-email-editor --save
 Next, you'll need to import the Email Editor module in your app's module.
 
 **app.module.ts**
+
+> If you don't have an **app.module.ts** file, you can ignore this step and add `imports: [ EmailEditorModule ]` to your **app.component.ts** instead.
 
 ```ts
 
@@ -41,24 +43,36 @@ import { EmailEditorModule } from 'angular-email-editor';
 
 ```ts
 import { Component, ViewChild } from '@angular/core';
-import { EmailEditorComponent } from 'angular-email-editor';
+import { EmailEditorComponent, EmailEditorModule } from 'angular-email-editor';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  imports: [EmailEditorModule],
 })
 export class AppComponent {
   title = 'angular-email-editor';
+  options: EmailEditorComponent['options'] = {
+    version: 'latest',
+    appearance: {
+      theme: 'modern_dark',
+    },
+  };
 
   @ViewChild(EmailEditorComponent)
-  private emailEditor: EmailEditorComponent;
+  private emailEditor!: EmailEditorComponent;
+
+  private get unlayer() {
+    return this.emailEditor.editor;
+  }
 
   // called when the editor is created
   editorLoaded() {
     console.log('editorLoaded');
     // load the design json here
-    // this.emailEditor.editor.loadDesign({});
+    // you can get the design json by calling unlayer.exportHtml (see below)
+    // this.unlayer.loadDesign({ /* json object here */ });
   }
 
   // called when the editor has finished loading
@@ -67,9 +81,10 @@ export class AppComponent {
   }
 
   exportHtml() {
-    this.emailEditor.editor.exportHtml((data) =>
-      console.log('exportHtml', data)
-    );
+    this.unlayer.exportHtml((result) => {
+      // result object format: { html: string, design: object, amp: object, chunks: object }
+      console.log('exportHtml', result);
+    });
   }
 }
 ```
@@ -80,13 +95,32 @@ export class AppComponent {
 <div class="container">
   <button (click)="exportHtml()">Export</button>
   <email-editor
-    (loaded)="editorLoaded($event)"
-    (ready)="editorReady($event)"
+    [options]="options"
+    (loaded)="editorLoaded()"
+    (ready)="editorReady()"
   ></email-editor>
 </div>
 ```
 
+**Skip Lib Check**
+
+Set `skipLibCheck: true` in `tsconfig.json`.
+
+**tsconfig.json**
+
+```ts
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+  }
+}
+```
+
+See the [example source](https://github.com/unlayer/angular-email-editor/tree/master/src) for a reference implementation.
+
 ### Methods
+
+All unlayer methods are available in `this.unlayer`. Here are the most used ones:
 
 | method         | params              | description                                             |
 | -------------- | ------------------- | ------------------------------------------------------- |
@@ -94,7 +128,8 @@ export class AppComponent {
 | **saveDesign** | `Function callback` | Returns the design JSON in a callback function          |
 | **exportHtml** | `Function callback` | Returns the design HTML and JSON in a callback function |
 
-See the [example source](https://github.com/unlayer/angular-email-editor/tree/master/src) for a reference implementation.
+See the [Unlayer Docs](https://docs.unlayer.com/) for all available methods, or log the object in the console to explore it.
+
 
 ### Properties
 
@@ -121,4 +156,4 @@ You can submit new language translations by creating a PR on this GitHub repo: h
 
 ### License
 
-Copyright (c) 2021 Unlayer. [MIT](LICENSE) Licensed.
+Copyright (c) 2024 Unlayer. [MIT](LICENSE) Licensed.
