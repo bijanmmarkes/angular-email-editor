@@ -1,11 +1,36 @@
 {
   "name": "ng-email-editor",
   "version": "15.2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0",
     "unlayer-types": "latest"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bijanmmarkes/angular-email-editor.git"
+  },
+  "module": "fesm2015/ng-email-editor.mjs",
+  "es2020": "fesm2020/ng-email-editor.mjs",
+  "esm2020": "esm2020/ng-email-editor.mjs",
+  "fesm2020": "fesm2020/ng-email-editor.mjs",
+  "fesm2015": "fesm2015/ng-email-editor.mjs",
+  "typings": "ng-email-editor.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./ng-email-editor.d.ts",
+      "node": "./fesm2015/ng-email-editor.mjs",
+      "default": "./fesm2020/ng-email-editor.mjs"
+    }
+  },
+  "sideEffects": false,
   "dependencies": {
     "tslib": "^2.3.0"
   }

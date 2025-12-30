@@ -33,4 +33,4 @@ jobs:
       
       - name: Publish to NPM
         working-directory: dist/email-editor
-        run: npm publish --provenance --access public
+        run: npm publish --provenance
