@@ -6,8 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      imports: [AppRoutingModule,EmailEditorModule]
+      imports: [AppComponent, AppRoutingModule, EmailEditorModule]
     }).compileComponents();
   });
 

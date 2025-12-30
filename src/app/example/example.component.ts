@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EmailEditorComponent } from 'email-editor';
+import { EmailEditorComponent, EmailEditorModule } from 'email-editor';
 
 import sample from './sample.json';
 
@@ -7,6 +7,8 @@ import sample from './sample.json';
   selector: 'app-example',
   templateUrl: './example.component.html',
   styleUrls: ['./example.component.css'],
+  standalone: true,
+  imports: [EmailEditorModule]
 })
 export class ExampleComponent implements OnInit {
   options: EmailEditorComponent['options'] = {

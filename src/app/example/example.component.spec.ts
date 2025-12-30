@@ -5,8 +5,7 @@ import { EmailEditorModule } from 'email-editor';
 describe('ExampleComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ExampleComponent],
-      imports: [EmailEditorModule]
+      imports: [ExampleComponent, EmailEditorModule]
     }).compileComponents();
   });
 
