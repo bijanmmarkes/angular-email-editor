@@ -24,6 +24,7 @@ let lastEditorId = 0;
   selector: 'email-editor',
   templateUrl: './email-editor.component.html',
   styleUrls: ['./email-editor.component.css'],
+  standalone: false
 })
 export class EmailEditorComponent implements OnInit, AfterViewInit {
   @Input() editorId: string;
