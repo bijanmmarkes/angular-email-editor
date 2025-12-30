@@ -1,16 +1,17 @@
 name: Publish to NPM
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    
+    runs-on: ubuntu-latest    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,6 +32,5 @@ jobs:
         run: npm run copy-readme
       
       - name: Publish to NPM
-        run: cd dist/email-editor && npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        working-directory: dist/email-editor
+        run: npm publish
