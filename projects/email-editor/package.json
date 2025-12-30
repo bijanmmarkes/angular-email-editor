@@ -1,6 +1,6 @@
 {
   "name": "ng-email-editor",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"

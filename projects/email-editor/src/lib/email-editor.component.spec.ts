@@ -47,11 +47,11 @@ describe('EmailEditorComponent', () => {
   it('should generate unique editor id when not provided', () => {
     const fixture1 = TestBed.createComponent(EmailEditorComponent);
     const comp1 = fixture1.componentInstance;
-    comp1.ngAfterViewInit();
+    comp1.ngOnInit();
     
     const fixture2 = TestBed.createComponent(EmailEditorComponent);
     const comp2 = fixture2.componentInstance;
-    comp2.ngAfterViewInit();
+    comp2.ngOnInit();
     
     expect(comp1.id).toBeTruthy();
     expect(comp2.id).toBeTruthy();
@@ -62,7 +62,7 @@ describe('EmailEditorComponent', () => {
     const newFixture = TestBed.createComponent(EmailEditorComponent);
     const newComponent = newFixture.componentInstance;
     newComponent.editorId = 'custom-editor-id';
-    newComponent.ngAfterViewInit();
+    newComponent.ngOnInit();
     expect(newComponent.id).toBe('custom-editor-id');
   });
 

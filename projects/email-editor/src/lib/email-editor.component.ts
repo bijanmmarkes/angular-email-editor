@@ -1,5 +1,6 @@
 import {
   Component,
+  OnInit,
   AfterViewInit,
   Input,
   Output,
@@ -24,7 +25,7 @@ let lastEditorId = 0;
   templateUrl: './email-editor.component.html',
   styleUrls: ['./email-editor.component.css'],
 })
-export class EmailEditorComponent implements AfterViewInit {
+export class EmailEditorComponent implements OnInit, AfterViewInit {
   @Input() editorId: string;
   @Input() options: UnlayerOptions = {};
   @Input() projectId: number;
@@ -43,10 +44,13 @@ export class EmailEditorComponent implements AfterViewInit {
 
   constructor() {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
     if (!this.id) {
       this.id = this.editorId || `editor-${++lastEditorId}`;
     }
+  }
+
+  ngAfterViewInit() {
     loadScript(this.loadEditor.bind(this), this.scriptUrl);
   }
 
