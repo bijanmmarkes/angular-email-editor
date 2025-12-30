@@ -1,13 +1,13 @@
 {
   "name": "ng-email-editor",
-  "version": "20.0.0",
+  "version": "21.0.0",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "peerDependencies": {
-    "@angular/common": "^20.0.0",
-    "@angular/core": "^20.0.0",
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
     "unlayer-types": "latest"
   },
   "repository": {
